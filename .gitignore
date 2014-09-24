@@ -1,0 +1,45 @@
+# MAVEN BUILD DIRECTORIES #
+###########################
+target/
+cms/target/
+site/target/
+bootstrap/configuration/target/
+bootstrap/content/target/
+
+# Jenkins
+
+# Eclipse specific files #
+##########################
+.project
+.metadata
+.classpath
+.settings/
+
+# IntelliJ specific files
+#########################
+.idea/
+.sass-cache/
+*.iml
+
+# ArgoUML specific files #
+##########################
+*.zargo~
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Others #
+##########
+release.properties
+
+#JRebel
+*rebel.xml
+
+

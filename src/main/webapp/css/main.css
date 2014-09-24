@@ -1,0 +1,483 @@
+@CHARSET "ISO-8859-1";
+
+div.innerContent {
+	margin-top: 100px;
+}
+
+div.floater {
+	opacity: 0.5;
+	filter: alpha(opacity = 50);
+}
+
+div.controls {
+	width: 89%;
+	z-index: 100;
+	position: fixed;
+	background-color: rgb(255, 255, 255);
+	z-index: 100;
+}
+
+div.cellScroller {
+	padding-left: 5px;
+	padding-right: 5px;
+	overflow: scroll;
+}
+
+div.bodyContent {
+	width: 90%;
+	box-shadow: 10px 10px 5px #336699;
+	background-color: #fefefe;
+	padding: 10px;
+	border: 1px solid #336699;
+	margin: 10px;
+	overflow: auto;
+}
+
+table.default {
+	margin: 5px auto 0.5em auto;
+	border-left: 1px solid #cccccc;
+	border-top: 1px solid #cccccc;
+	border-right: 1px solid #999999;
+	border-bottom: 1px solid #999999;
+	background-color: #efefef;
+	width: 95%;
+	table-layout: fixed;
+}
+/*table.default td { border-left:1px solid #ffffff; border-top:1px solid #ffffff; border-right:1px solid #cccccc; border-bottom:1px solid #cccccc; }*/
+/*table.default td.header { font-weight:bold;font-size:10pt;color:#ffffff;background-color:#336699; border-left:1px solid #e0e7f7; border-top:1px solid #e0e7f7; border-right:1px solid #999999; border-bottom:1px solid #999999; 
+                    white-space:nowrap;vertical-align:bottom;
+					top: expression(document.getElementById("divTable1").scrollTop-2;); /*IE5+ only*/
+/*z-index: 30;}*/
+table.default th {
+	font-weight: bold;
+	font-size: 10pt;
+	color: #ffffff;
+	background-color: #336699;
+	border-left: 1px solid #e0e7f7;
+	border-top: 1px solid #e0e7f7;
+	border-right: 1px solid #999999;
+	border-bottom: 1px solid #999999;
+	vertical-align: center;
+	top: expression(document.getElementById ( "divTable1") .scrollTop-2; );
+	/*IE5+ only*/
+	z-index: 30;
+}
+
+table.default th.locked {
+	font-weight: bold;
+	font-size: 10pt;
+	color: #ffffff;
+	background-color: #336699;
+	border-left: 1px solid #e0e7f7;
+	border-top: 1px solid #e0e7f7;
+	border-right: 1px solid #999999;
+	border-bottom: 1px solid #999999;
+	vertical-align: center;
+	top: expression(document.getElementById ( "divTable1") .scrollTop-2; );
+	/*IE5+ only*/
+	left: expression(document.getElementById ( "divTable1") .scrollLeft);
+	/*IE5+ only*/
+	position: relative;
+	z-index: 10;
+}
+
+table.default tr.even {
+	background-color: #fefefe;
+	font-size: 10pt;
+}
+
+table.default tr.odd {
+	background-color: #F7F7E7;
+	font-size: 10pt;
+}
+
+table.default td.even {
+	background-color: #fefefe;
+	font-size: 10pt;
+	word-wrap: break-word;
+	overflow: scroll;
+}
+
+table.default td.odd {
+	background-color: #F7F7E7;
+	font-size: 10pt;
+	word-wrap: break-word;
+	overflow: scroll;
+}
+
+table.default td.hiEven {
+	background-color: #CAD3E2;
+	font-size: 10pt;
+}
+
+table.default td.hiOdd {
+	background-color: #CAD3E2;
+	font-size: 10pt;
+}
+
+table.default td.evenLocked {
+	background-color: #fefefe;
+	font-size: 10pt;
+	left: expression(document.getElementById ( "divTable1") .scrollLeft);
+	/*IE5+ only*/
+	position: relative;
+	z-index: 10;
+}
+
+table.default td.oddLocked {
+	background-color: #F7F7E7;
+	font-size: 10pt;
+	left: expression(document.getElementById ( "divTable1") .scrollLeft);
+	/*IE5+ only*/
+	position: relative;
+	z-index: 10;
+}
+
+h1.hBlu {
+	color: #336699;
+}
+
+h2.hBlu {
+	color: #336699;
+}
+
+h3.hBlu {
+	color: #336699;
+}
+
+ul.uList {
+	color: #336699;
+}
+
+hr.hrClass {
+	color: #336699;
+	height: 1px;
+}
+
+label {
+	font: normal 500 10pt;
+}
+
+textarea {
+	font: normal normal 8pt;
+}
+
+.activeIMG {
+	cursor: hand
+}
+
+.divs {
+	display: none
+}
+
+.btnInput {
+	background-color: #DBDDEE;
+	border: 1px solid #808080;
+	cursor: hand;
+	font: normal 8pt Verdana, Arial, sans-serif;
+}
+
+.btnInputFocus {
+	background-color: #DBDDEE;
+	border: 2px solid #000000;
+	cursor: hand;
+	font: bold 8pt Verdana, Arial, sans-serif;
+}
+
+.btnInputRedBG {
+	background-color: #DBDDEE;
+	border: 1px solid red;
+	cursor: hand;
+	font: bold 8pt Verdana, Arial, sans-serif;
+}
+
+.btnInputNavyBG {
+	background-color: #DBDDEE;
+	border: 1px solid navy;
+	cursor: hand;
+	font: bold 8pt Verdana, Arial, sans-serif;
+}
+
+.btnInputBlackBG {
+	background-color: #DBDDEE;
+	border: 1px solid #000000;
+	cursor: hand;
+	font: bold 8pt Verdana, Arial, sans-serif;
+}
+
+.txtInputRO {
+	border: 1px solid #808080;
+	border-style: dotted;
+}
+
+.txtInput {
+	border: 1px solid #808080;
+}
+
+.labelInput {
+	border-width: 0px;
+}
+
+.menuDiv {
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	border: solid #336699 2px;
+	background-color: white
+}
+
+.lineDiv {
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	border-top: solid #336699 2px;
+	background-color: transparent
+}
+
+a {
+	font: normal 10pt Verdana, Arial, sans-serif;
+}
+
+a:active {
+	color: #CC0000
+}
+
+a:hover {
+	color: #CC0000
+}
+
+a:link {
+	color: #000099
+}
+
+td.cmFolder {
+	background-color: #333399;
+	color: White;
+	font-size: larger;
+	font-style: normal;
+	font-weight: bold;
+	text-align: left;
+}
+
+td.cmLink {
+	/*border: 1px solid Black;*/
+	color: #333399;
+	font-weight: bold;
+	font-size: 14px;
+	background-color: White;
+	text-align: left;
+	vertical-align: top;
+	width: 100px;
+}
+
+td.cmIcon {
+	/*border: 1px solid Black;*/
+	width: 23px;
+}
+
+td.cmComments {
+	/*border: 1px solid Black;*/
+	background-color: White;
+	color: Black;
+	font-style: italic;
+	font-size: x-small;
+	text-align: left;
+	vertical-align: top;
+}
+
+td.treeTD {
+	font-size: small;
+	font-style: normal;
+	font-variant: normal;
+}
+
+td.vertLabel {
+	font-size: large;
+	layout-flow: vertical-ideographic;
+}
+
+table.term {
+	width: 100%;
+	border: 1px solid #333399;
+}
+
+th.term {
+	border: 1px solid #333399;
+	background-color: #333399;
+	color: #FFFFFF;
+}
+
+td.term {
+	border: 1px solid #333399;
+	background-color: #FFFFFF;
+	color: #333399;
+	font-size: 12px;
+	font-weight: 500;
+}
+
+td.def {
+	border: 1px solid #333399;
+	background-color: #FFFFFF;
+	color: #333399;
+	font-size: 12px;
+}
+
+/*Admin Tab Set*/
+table.tabAdm {
+	border: 0px;
+	padding: 0px;
+	width: 400px;
+}
+
+table.tabTopAdm {
+	border: 0px;
+	padding: 0px;
+	width: 100%;
+}
+
+table.tabTopAdm td.tabOpen {
+	width: 1px;
+}
+
+table.tabTopAdm td.tabBtwn {
+	width: 1px;
+}
+
+table.tabTopAdm td.tabClose {
+	width: 1px;
+}
+
+table.tabTopAdm td.curTabTxt {
+	background-color: #CAD3E2;
+	color: #333399;
+	font-weight: bold;
+	font-size: 14px;
+	text-align: center;
+	width: 100px;
+}
+
+table.tabTopAdm td.tabTxt {
+	background-color: #CAD3E2;
+	color: #ffffff;
+	font-weight: bold;
+	font-size: 14px;
+	text-align: center;
+	width: 100px;
+}
+
+/*Other Tab Set*/
+table.tabMn {
+	border: 0px;
+	padding: 0px;
+	width: 250px;
+}
+
+table.tabTopMn {
+	border: 0px;
+	padding: 0px;
+	width: 100%;
+}
+
+table.tabTopMn td.tabOpen {
+	width: 1px;
+}
+
+table.tabTopMn td.tabBtwn {
+	width: 1px;
+}
+
+table.tabTopMn td.tabClose {
+	width: 1px;
+}
+
+table.tabTopMn td.curTabTxt {
+	background-color: #CAD3E2;
+	color: #333399;
+	font-weight: bold;
+	font-size: 14px;
+	text-align: center;
+	width: 100px;
+}
+
+table.tabTopMn td.tabTxt {
+	background-color: #CAD3E2;
+	color: #ffffff;
+	font-weight: bold;
+	font-size: 14px;
+	text-align: center;
+	widht: 100px;
+}
+
+td.underBanner {
+	background-color: #CAD3E2;
+	color: #333399;
+	font-weight: bold;
+	font-size: 14px;
+	text-align: center;
+	width: 100%;
+}
+/*Discussion Table*/
+table.discussion {
+	width: 100%;
+}
+
+table.discussion td.date {
+	background-color: #ffffff;
+	color: #000000;
+	font-weight: bold;
+	font-size: 14px;
+	text-align: left;
+	vertical-align: middle;
+	width: 150px;
+}
+
+table.discussion td.subject {
+	background-color: #ffffff;
+	color: #333399;
+	font-weight: bold;
+	font-size: 14px;
+	text-align: left;
+	width: 200px;
+	vertical-align: middle;
+}
+
+table.discussion td.author {
+	background-color: #ffffff;
+	color: #000000;
+	font-weight: normal;
+	font-size: 14px;
+	text-align: left;
+	vertical-align: middle;
+}
+
+table.discussion td.hilite {
+	background-color: #CAD3E2;
+	vertical-align: middle;
+}
+
+span.spanHeader {
+	color: #336699;
+	font-size: 12pt;
+}
+
+span.bannerLabel {
+	color: #000000;
+	font-size: 10pt;
+}
+
+span.bannerValue {
+	color: #FF0000;
+	font-size: 10pt;
+}
+
+span.bannerValueBlu {
+	color: #336699;
+	font-size: 10pt;
+}
+
+span.rptCalc {
+	color: #FF4040;
+	font-size: 8pt;
+}

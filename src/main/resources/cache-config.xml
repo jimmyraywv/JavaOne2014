@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- 
+		EhCach Configuration 
+		======================
+		To disable caching, set the system property net.sf.ehcache.disabled=true
+-->
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
+    updateCheck="false"
+	monitoring="autodetect" dynamicConfig="true" maxBytesLocalHeap="200M">
+	
+	
+	<!--
+
+	    CacheManagerPeerProvider
+	    ========================
+	    (For distributed operation)
+	
+	    Specifies a CacheManagerPeerProviderFactory which will be used to create a
+	    CacheManagerPeerProvider, which discovers other CacheManagers in the cluster.
+	
+	    One or more providers can be configured. The first one in the ehcache.xml is the default, which is used
+	    for replication and bootstrapping.
+	
+	    The attributes of cacheManagerPeerProviderFactory are:
+	    * class - a fully qualified factory class name
+	    * properties - comma separated properties having meaning only to the factory.
+	
+	    Providers are available for RMI, JGroups and JMS as shown following.
+	
+	    RMICacheManagerPeerProvider
+	    +++++++++++++++++++++++++++
+	
+	    Ehcache comes with a built-in RMI-based distribution system with two means of discovery of
+	    CacheManager peers participating in the cluster:
+	    * automatic, using a multicast group. This one automatically discovers peers and detects
+	      changes such as peers entering and leaving the group
+	    * manual, using manual rmiURL configuration. A hardcoded list of peers is provided at
+	      configuration time.
+	
+	    Configuring Automatic Discovery:
+	    Automatic discovery is configured as per the following example:
+	    <cacheManagerPeerProviderFactory
+	                        class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
+	                        properties="hostName=fully_qualified_hostname_or_ip,
+	                                    peerDiscovery=automatic, multicastGroupAddress=230.0.0.1,
+	                                    multicastGroupPort=4446, timeToLive=32"/>
+	
+	    Valid properties are:
+	    * peerDiscovery (mandatory) - specify "automatic"
+	    * multicastGroupAddress (mandatory) - specify a valid multicast group address
+	    * multicastGroupPort (mandatory) - specify a dedicated port for the multicast heartbeat
+	      traffic
+	    * timeToLive - specify a value between 0 and 255 which determines how far the packets will
+	      propagate.
+	
+	      By convention, the restrictions are:
+	      0   - the same host
+	      1   - the same subnet
+	      32  - the same site
+	      64  - the same region
+	      128 - the same continent
+	      255 - unrestricted
+	
+	     * hostName - the hostname or IP of the interface to be used for sending and receiving multicast
+	       packets (relevant to multi-homed hosts only)
+	-->
+	<cacheManagerPeerProviderFactory
+                        class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
+                        properties="peerDiscovery=automatic, multicastGroupAddress=230.0.0.11,
+                                    multicastGroupPort=4445, timeToLive=32"/>
+                                    
+    <!--
+	    CacheManagerPeerListener
+	    ========================
+	    (Enable for distributed operation)
+	
+	    Specifies a CacheManagerPeerListenerFactory which will be used to create a
+	    CacheManagerPeerListener, which listens for messages from cache replicators participating in the cluster.
+	
+	    The attributes of cacheManagerPeerListenerFactory are:
+	    class - a fully qualified factory class name
+	    properties - comma separated properties having meaning only to the factory.
+	
+	    Ehcache comes with a built-in RMI-based distribution system. The listener component is
+	    RMICacheManagerPeerListener which is configured using
+	    RMICacheManagerPeerListenerFactory. It is configured as per the following example:
+	
+	    <cacheManagerPeerListenerFactory
+	        class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory"
+	        properties="hostName=fully_qualified_hostname_or_ip,
+	                    port=40001,
+	                    remoteObjectPort=40002,
+	                    socketTimeoutMillis=120000"
+	                    propertySeparator="," />
+	
+	    All properties are optional. They are:
+	    * hostName - the hostName of the host the listener is running on. Specify
+	      where the host is multihomed and you want to control the interface over which cluster
+	      messages are received. Defaults to the host name of the default interface if not
+	      specified.
+	    * port - the port the RMI Registry listener listens on. This defaults to a free port if not specified.
+	    * remoteObjectPort - the port number on which the remote objects bound in the registry receive calls.
+	                         This defaults to a free port if not specified.
+	    * socketTimeoutMillis - the number of ms client sockets will stay open when sending
+	      messages to the listener. This should be long enough for the slowest message.
+	      If not specified it defaults to 120000ms.
+	
+	    
+	-->                            
+    <cacheManagerPeerListenerFactory class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory"/>
+
+	<!--
+
+    Default Cache configuration. These settings will be applied to caches
+    created programmatically using CacheManager.add(String cacheName).
+    This element is optional, and using CacheManager.add(String cacheName) when
+    its not present will throw CacheException
+
+    The defaultCache has an implicit name "default" which is a reserved cache name.
+    
+	-->
+	<defaultCache eternal="false"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"
+		memoryStoreEvictionPolicy="LRU" statistics="false"/>
+		
+	<cache name="user.inFlightForms" eternal="false"
+		timeToIdleSeconds="120" timeToLiveSeconds="300"
+		memoryStoreEvictionPolicy="LRU" statistics="false">
+		<cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory" properties="asynchronousReplicationIntervalMillis=200"/>
+		<bootstrapCacheLoaderFactory class="net.sf.ehcache.distribution.RMIBootstrapCacheLoaderFactory"/>
+		<searchable keys="true"/>
+	</cache>
+	
+	<cache name="user.consentManagement" eternal="false"
+		timeToIdleSeconds="120" timeToLiveSeconds="300"
+		memoryStoreEvictionPolicy="LRU" statistics="false">
+		<cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory" properties="asynchronousReplicationIntervalMillis=200"/>
+		<bootstrapCacheLoaderFactory class="net.sf.ehcache.distribution.RMIBootstrapCacheLoaderFactory"/>
+	</cache>
+	
+	<cache name="user.consentManagement.restrictions" eternal="false"
+		timeToIdleSeconds="120" timeToLiveSeconds="300"
+		memoryStoreEvictionPolicy="LRU" statistics="false">
+		<cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory" properties="asynchronousReplicationIntervalMillis=200"/>
+		<bootstrapCacheLoaderFactory class="net.sf.ehcache.distribution.RMIBootstrapCacheLoaderFactory"/>
+	</cache>
+	
+	<cache name="personnalData" eternal="false"
+		timeToIdleSeconds="600" timeToLiveSeconds="1800"
+		memoryStoreEvictionPolicy="LRU" statistics="false">
+		<cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory" properties="asynchronousReplicationIntervalMillis=200"/>
+		<bootstrapCacheLoaderFactory class="net.sf.ehcache.distribution.RMIBootstrapCacheLoaderFactory"/>
+	</cache>
+	
+	<cache name="appData" eternal="false"
+		timeToIdleSeconds="600" timeToLiveSeconds="3600"
+		memoryStoreEvictionPolicy="LRU" statistics="false">
+		<cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory" properties="asynchronousReplicationIntervalMillis=200"/>
+		<bootstrapCacheLoaderFactory class="net.sf.ehcache.distribution.RMIBootstrapCacheLoaderFactory"/>
+	</cache>
+
+</ehcache>
