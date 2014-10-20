@@ -8,7 +8,7 @@
 <title>CloudBees Hello World</title>
 <link type="text/css" rel="stylesheet" href="css/main.css" />
 
-<base href="${baseHref}" />
+<%-- <base href="${baseHref}" /> --%>
 </head>
 <body>
 	<div class="bodyContent">

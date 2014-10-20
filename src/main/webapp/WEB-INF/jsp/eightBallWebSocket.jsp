@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Headers</title>
 <link type="text/css" rel="stylesheet" href="css/main.css" />
-<base href="${baseHref}" />
+<%-- <base href="${baseHref}" /> --%>
 <script src="js/jquery-2.1.0.js" type="text/javascript"></script>
 <script src="js/sockjs-0.3.4.js" type="text/javascript"></script>
 <script language="javascript" type="text/javascript" src="js/stomp.js"></script>

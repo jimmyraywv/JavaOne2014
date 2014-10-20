@@ -5,7 +5,7 @@
 <head>
 <title>${error404Title}</title>
 <link type="text/css" rel="stylesheet" href="css/main.css" />
-<base href="${baseHref}" />
+<%-- <base href="${baseHref}" /> --%>
 </head>
 <body>
 	<h3 class="hBlu">

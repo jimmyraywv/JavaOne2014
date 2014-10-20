@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Memory</title>
 <link type="text/css" rel="stylesheet" href="css/main.css" />
-<base href="${baseHref}" />
+<%-- <base href="${baseHref}" /> --%>
 </head>
 <body>
 	<div class="bodyContent">
