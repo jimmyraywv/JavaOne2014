@@ -1,0 +1,19 @@
+version: 0.0
+
+os: linux
+
+hooks:
+
+ BeforeInstall:
+
+   - location: scripts/pre.sh
+
+     runas: root
+
+AfterInstall:
+
+   - location: scripts/post.sh
+
+     runas: root
+
+
