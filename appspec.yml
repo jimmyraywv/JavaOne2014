@@ -2,6 +2,10 @@ version: 0.0
 
 os: linux
 
+files:
+  - source: helloworld.war
+    destination: /usr/share/tomcat8/webapps
+
 hooks:
 
  BeforeInstall:
