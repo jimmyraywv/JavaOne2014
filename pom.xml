@@ -30,6 +30,7 @@
  </repositories>
  
 	<build>
+    <finalName>helloworld</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
