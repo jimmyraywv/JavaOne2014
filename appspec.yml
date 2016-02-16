@@ -2,12 +2,14 @@ version: 0.0
 
 os: linux
 
+#Move the war file to the Tomcat WebApps directory.
 files:
   - source: target/helloworld.war
     destination: /usr/share/tomcat8/webapps
 
 hooks:
 
+ #Run this before files are moved.
  BeforeInstall:
 
    - location: scripts/pre.sh
